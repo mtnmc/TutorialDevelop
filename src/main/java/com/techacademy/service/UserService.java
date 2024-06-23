@@ -23,12 +23,20 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    // --------　追加：ここから ----------
+    // --------　追加：ここから2 ----------
+    /** Userを1件検索して返す　*/
+    public User getUser(Integer id) {
+        return userRepository.findById(id).get();
+    }
+    // ----- 追加：ここまで2 -----
+
+
+    // --------　追加：ここから1 ----------
     /** Userの登録をおこなう */
     @Transactional
     public User saveUser(User user) {
         return userRepository.save(user);
     }
-    // ----- 追加：ここまで -----
+    // ----- 追加：ここまで1 -----
 
 }
