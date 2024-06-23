@@ -49,8 +49,8 @@ public class UserController {
 
     // ----- 追加：ここから2 -----
     /** User更新画面を表示　*/
-    @GetMapping("/update/{id}")
-    public String getUser(@PathVariable("id")Integer id, Model model) {
+    @GetMapping("/update/{id}/")
+    public String getUser(@PathVariable("id") Integer id, Model model) {
         // Modelに登録
         model.addAttribute("user", service.getUser(id));
         // User更新画面に遷移
@@ -63,7 +63,7 @@ public class UserController {
             // User登録
             service.saveUser(user);
             // 一覧画面にリダイレクト
-            return "redirece:/user/list";
+            return "redirect:/user/list";
 
     }
      // ----- 追加：ここまで2 -----
