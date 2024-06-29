@@ -4,6 +4,8 @@ import java.util.Set;// 追加３
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;// 追加４
+import org.springframework.validation.annotation.Validated;// 追加４
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;// 追加1
 import org.springframework.web.bind.annotation.PathVariable;// 追加2
@@ -40,14 +42,21 @@ public class UserController {
         return "user/register";
     }
 
+    // ----- 変更ここからchapter10.3 -----
     /** User登録処理 */
     @PostMapping("/register")
-    public String postRegister(User user) {
+    public String postRegister(@Validated User user, BindingResult res,Model model) {
+        if(res.hasErrors()) {
+            // エラーあり
+            return getRegister(user);
+        }
         // User登録
         service.saveUser(user);
         // 一覧画面にリダイレクト
         return "redirect:/user/list";
     }
+    // 変更ここまで
+
     // ----- 追加：ここまで1 -----
 
     // ----- 追加：ここから2 -----
