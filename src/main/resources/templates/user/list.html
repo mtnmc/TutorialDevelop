@@ -3,11 +3,16 @@
 <head>
     <meta charset="utf-8">
     <title>Tutorial of Devalop</title>
-     <link rel="stylesheet" th:href="@{/css/user/list.css}">
+    <link rel="stylesheet" th:href="@{/css/user/list.css}">
 </head>
 <body>
     <h1>User情報管理システム</h1>
     <h2>User一覧（全件）</h2>
+    <!-- 追加ここから３ -->
+    <form method="post" th:action="@{/logout}">
+        <input type="submit" value="ログアウト">
+    </form><br>
+    <!-- 追加ここまで３ -->
     <!-- 変更ここから2 -->
     <form name ="frm" method="post" th:action="@{/user/list}">
         <a th:href="@{/user/register}">Userの登録</a>
